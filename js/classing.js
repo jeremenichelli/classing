@@ -1,6 +1,6 @@
 // Clasing.js
 // fallback for browser that don't support classList
-// by Jeremias Menichelli - http://jeremenichelli.github.com
+// by Jeremias Menichelli - https://github.com/jeremenichelli
 
 if (document.documentElement.classList){
 	// Assign function to classLIst ones
