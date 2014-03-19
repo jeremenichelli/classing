@@ -17,14 +17,14 @@
 		<h1>Classing</h1>
 		<h2>Test Page</h2>
 		<p>This is a page to test the Classing scripts, if your browser supports <strong>classList</strong>, the script will use it. But, if you the browser doesn't support the API, <strong>it includes a fallback</strong> for older browsers.</p>
-		<p>Though you can't see it there's a document element with this Id: <strong>test-element</strong> and you can check it on your console by the variable name: <strong>elem</strong>. You can use it to test the following functions:</p>
+		<p>Though you can't see it there's a document element with this id: <strong>test-element</strong> and you can check it on your console by the variable name: <strong>elem</strong>. You can use it to test the following functions:</p>
 		<ul>
-			<li><strong>hasClass</strong>(elem, "nameOfTheClass")</li>
-			<li><strong>addClass</strong>(elem, "nameOfTheClass")</li>
-			<li><strong>removeClass</strong>(elem, "nameOfTheClass")</li>
-			<li><strong>toggleClass</strong>(elem, "nameOfTheClass")</li>
+			<li>elem<strong>.hasClass</strong>("className")</li>
+			<li>elem<strong>.addClass</strong>("className")</li>
+			<li>elem<strong>.removeClass</strong>("className")</li>
+			<li>elem<strong>.toggleClass</strong>("className")</li>
 		</ul>
-		<p>Here's a <a href="http://jsperf.com/classing-fallback-test" target="_blank">performance test</a> comparing classList, classing and jQuery.</p>
+		<p>Here's a <a href="http://jsperf.com/classing-perf-test" target="_blank">performance test</a> comparing classList, classing's fallback methods and jQuery.</p>
 		<p>Enjoy, Jeremias Menichelli.</p>
 		<div id="test-element" class="apple banana kiwi orange"></div>	
 	</div>
