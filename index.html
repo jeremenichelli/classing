@@ -5,15 +5,20 @@
 	<title>Classing Test</title>
 	<style>
 		body {
-			color: #333333;
+			background: #A4CDCD;
+			color: #222222;
 			font-size: 16px;
 			font-family: Helvetica, Arial, sans-serif;
+			height: 100%;
 		}
 		.container{
 			margin: 20px auto;
 			max-width: 800px;
 			padding: 40px;
 			width: 90%;
+		}
+		a{
+			color: #2165AB;
 		}
 		pre {
 			-moz-hyphens: none;
@@ -32,25 +37,29 @@
     		margin: 0 5px 0 0;
 		}
 		.classing-form > div {
-		    padding: 5px 0;
+		    padding: 10px 0;
 		}
-		.classing-form input[type="submit"] {
+		.classing-form input[type="submit"],
+		.btn {
 		    background: none repeat scroll 0 0 #1D1F21;
 		    border: 0 none;
 		    border-radius: 3px;
 		    color: #FFFFFF;
-		    font-size: 14px;
+		    font-size: 12px;
+		    height: 22px;
 		    padding: 2px 15px;
+		    text-decoration: none;
 		    vertical-align: middle;
 		}
-		.classing-form input[type="submit"]:active {
+		.classing-form input[type="submit"]:active,
+		.btn:active {
 			background: none repeat scroll 0 0 #3F3F51;
 		}
 		.classing-form input[type="radio"] {
 			margin: 0 10px 0 0;
 		}
 		.classing-form input[type="radio"] + label:before {
-			color: #CECECE;
+			color: #1D1F21;
 			content: "|";
 			margin: 0 10px 0 0;
 		}
@@ -59,15 +68,14 @@
 <body>
 	<div class="container">
 		<h1>Classing</h1>
-		<h2>Test Page</h2>
-		<p>This is a page to test the Classing scripts, if your browser supports <strong>classList</strong>, the script will use it. But, if you the browser doesn't support the API, <strong>it includes a fallback</strong> for older browsers.</p>
+		<p>Class let's you manipulate classes on HTML elements. If the browser supports <strong>classList</strong>, the script will use it and take advantage of its great performance. If the API is not supported, <strong>classing includes a fallback</strong> for older browsers.</p>
 		<ul>
 			<li>elem<strong>.hasClass</strong>("className")</li>
 			<li>elem<strong>.addClass</strong>("className")</li>
 			<li>elem<strong>.removeClass</strong>("className")</li>
 			<li>elem<strong>.toggleClass</strong>("className")</li>
 		</ul>
-		<p>Here's a simpleplayground for you to test it:</p>
+		<p>Here's a simple playground for you to test it:</p>
 		<div class="action-buttons">
 			<form action="?" class="classing-form">
 				<div>
@@ -92,7 +100,7 @@
 			</code>
 		</pre>
 		<p>Here's a <a href="http://jsperf.com/classing-perf-test" target="_blank">performance test</a> comparing classList, classing's fallback methods and jQuery.</p>
-		<p>Enjoy, Jeremias Menichelli.</p>
+		<p>Enjoy! <a href="https://www.github.com/jeremenichelli" class="btn">me on GitHub</a> <a href="https://www.github.com/jeremenichelli/classing" class="btn">classing on GitHub</a></p>
 		<div id="test-element" class="apple banana kiwi orange"></div>	
 	</div>
 	<script src="js/classing.js"></script>
