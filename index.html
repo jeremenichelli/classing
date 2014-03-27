@@ -4,11 +4,55 @@
 	<meta charset="UTF-8">
 	<title>Classing Test</title>
 	<style>
+		body {
+			color: #333333;
+			font-size: 16px;
+			font-family: Helvetica, Arial, sans-serif;
+		}
 		.container{
 			margin: 20px auto;
 			max-width: 800px;
 			padding: 40px;
 			width: 90%;
+		}
+		pre {
+			-moz-hyphens: none;
+		    -moz-tab-size: 1;
+		    tab-size: 1;
+		    background: none repeat scroll 0 0 #1D1F21;
+		    color: #FFFFFF;
+		    font-family: Menlo,Monaco,monospace;
+		    font-size: 0.8rem;
+		    overflow: auto;
+		    padding: 0;
+		    position: relative;
+		    word-break: normal;
+		}
+		label {
+    		margin: 0 5px 0 0;
+		}
+		.classing-form > div {
+		    padding: 5px 0;
+		}
+		.classing-form input[type="submit"] {
+		    background: none repeat scroll 0 0 #1D1F21;
+		    border: 0 none;
+		    border-radius: 3px;
+		    color: #FFFFFF;
+		    font-size: 14px;
+		    padding: 2px 15px;
+		    vertical-align: middle;
+		}
+		.classing-form input[type="submit"]:active {
+			background: none repeat scroll 0 0 #3F3F51;
+		}
+		.classing-form input[type="radio"] {
+			margin: 0 10px 0 0;
+		}
+		.classing-form input[type="radio"] + label:before {
+			color: #CECECE;
+			content: "|";
+			margin: 0 10px 0 0;
 		}
 	</style>
 </head>
@@ -17,20 +61,109 @@
 		<h1>Classing</h1>
 		<h2>Test Page</h2>
 		<p>This is a page to test the Classing scripts, if your browser supports <strong>classList</strong>, the script will use it. But, if you the browser doesn't support the API, <strong>it includes a fallback</strong> for older browsers.</p>
-		<p>Though you can't see it there's a document element with this id: <strong>test-element</strong> and you can check it on your console by the variable name: <strong>elem</strong>. You can use it to test the following functions:</p>
 		<ul>
 			<li>elem<strong>.hasClass</strong>("className")</li>
 			<li>elem<strong>.addClass</strong>("className")</li>
 			<li>elem<strong>.removeClass</strong>("className")</li>
 			<li>elem<strong>.toggleClass</strong>("className")</li>
 		</ul>
+		<p>Here's a simpleplayground for you to test it:</p>
+		<div class="action-buttons">
+			<form action="?" class="classing-form">
+				<div>
+					<label for="class-name">Class name</label><input type="text" id="class-name">
+					<input type="submit" id="submit-btn" value="Apply">
+				</div>
+				<div>
+					<label for="add-radio">Add class</label>
+						<input id="add-radio" name="classing-action" type="radio" value="add" checked>
+					<label for="remove-radio">Remove class</label>
+						<input id="remove-radio" name="classing-action" type="radio" value="remove">
+					<label for="has-radio">Has class</label>
+						<input id="has-radio" name="classing-action" type="radio" value="has">
+					<label for="toggle-radio">Toggle class</label>
+						<input id="toggle-radio" name="classing-action" type="radio" value="toggle">
+				</div>
+			</form>
+		</div>
+		<pre>
+			<code>
+				<span>&lt;</span>div id="test-element" class="<span id="class-list">apple banana kiwi orange</span><span>"&gt;</span><span>&lt;</span>/div<span>&gt;
+			</code>
+		</pre>
 		<p>Here's a <a href="http://jsperf.com/classing-perf-test" target="_blank">performance test</a> comparing classList, classing's fallback methods and jQuery.</p>
 		<p>Enjoy, Jeremias Menichelli.</p>
 		<div id="test-element" class="apple banana kiwi orange"></div>	
 	</div>
-	<script>
-		var elem = document.getElementById('test-element');
-	</script>
 	<script src="js/classing.js"></script>
+	<script>
+		(function(){
+			'use strict';
+			// Object to prototype
+			var els = (typeof HTMLElement !== "undefined") ? HTMLElement : Element;
+
+			if(document.documentElement.addEventListener){
+				els.prototype.addEvent = function(ev, fn){
+					this.addEventListener(ev, fn, false);
+				}
+
+				els.prototype.removeEvent = function(ev, fn){
+					this.removeEventListener(ev, fn, false);
+				}
+			} else {
+				if(!Event.prototype.preventDefault) {
+					Event.prototype.preventDefault = function() {
+						this.returnValue = false;
+					}
+				}
+
+				els.prototype.addEvent = function(ev, fn){
+					this.attachEvent("on"+ev, fn);
+				}
+				
+				els.prototype.removeEvent = function(ev, fn){
+					this.detachEvent("on"+ev, fn);
+				}
+			}
+		})();
+
+		var elem = document.getElementById('test-element');
+		var submitBtn = document.getElementById('submit-btn');
+		var radios = document.querySelectorAll('input[type=radio]');
+		var classPlaceholder = document.getElementById('class-list');
+
+		var modifyClass = function(action, c){
+			switch (action){
+				case 'add':
+					elem.addClass(c);
+					break;
+				case 'remove':
+					elem.removeClass(c);
+					break;
+				case 'has':
+					alert(elem.hasClass(c));
+					break;
+				case 'toggle':
+					elem.toggleClass(c);
+					break;
+			};
+		}
+		var updatePlaceholder = function(){
+			classPlaceholder.innerHTML = elem.getAttribute('class');
+		}
+
+		submitBtn.addEvent('click', function(e){
+			e.preventDefault();
+			var action, c = document.getElementById('class-name').value;
+			if(c.length > 0) {
+				for (var i = 0, len = radios.length; i < len; i++) {
+					if(radios[i].checked) action = radios[i].value;
+				};
+				modifyClass(action, c);
+				updatePlaceholder();
+			}
+		});
+
+	</script>
 </body>
 </html>

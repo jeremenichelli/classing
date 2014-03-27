@@ -1,4 +1,4 @@
-// Clasing.js
+// Classing.js
 // fallback for browser that don't support classList
 // by Jeremias Menichelli - https://github.com/jeremenichelli
 (function(){
