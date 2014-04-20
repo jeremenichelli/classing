@@ -8,7 +8,7 @@
 
 	// Given an element, converts classes into an array
 	var _classToArray = function(el){
-		return el.getAttribute('class').split(/\s/);
+		return el.className.split(/\s/);
 	}
 	// Given an array, returns a string
 	var _arrayToClass = function(cs){
@@ -31,8 +31,8 @@
 	// Adds a class (if there's not already there)
 	var _addClass = function(el, c){
 		if(!_hasClass(el, c)){
-			var nc = el.getAttribute('class')+" "+c;
-			el.setAttribute('class', nc);
+			var nc = el.className+" "+c;
+			el.className = nc;
 		}
 	}
 	// Removes a class (if it's there)
@@ -44,7 +44,7 @@
 					cs.splice(i,1);
 				}
 			};
-			el.setAttribute('class', _arrayToClass(cs));
+			el.className = _arrayToClass(cs);
 		}
 	}
 	// Toggles a class in an element
