@@ -47,7 +47,7 @@
 		_hasClass(el, c) ? _removeClass(el, c) : _addClass(el, c);
 	}
 	
-	if(document.documentElement.classList){
+	if('classList' in document.createElement('_')){
 		els.prototype.hasClass = function(c){
 			return this.classList.contains(c);
 		}
