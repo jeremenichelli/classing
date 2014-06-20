@@ -12,7 +12,7 @@
 	}
 	// Given an array, returns a string
 	var _arrayToClass = function(cs){
-		return cs.join(" ")
+		return cs.join(" ");
 	}
 	// Checks if an element has a class
 	var _hasClass = function(el, c){
@@ -20,14 +20,14 @@
 		var flag = false;
 		for (var i = 0; i < cs.length; i++) {
 			if(cs[i] == c) flag = true;
+            break;
 		};
 		return flag
 	}
 	// Adds a class (if there's not already there)
 	var _addClass = function(el, c){
 		if(!_hasClass(el, c)){
-			var nc = el.className+" "+c;
-			el.className = nc;
+			el.className = el.className+" "+c;
 		}
 	}
 	// Removes a class (if it's there)
