@@ -16,13 +16,7 @@
 	}
 	// Checks if an element has a class
 	var _hasClass = function(el, c){
-		var cs = _classToArray(el);
-		var flag = false;
-		for (var i = 0; i < cs.length; i++) {
-			if(cs[i] == c) flag = true;
-            break;
-		};
-		return flag
+		return _classToArray(el).indexOf(c) !== -1;
 	}
 	// Adds a class (if there's not already there)
 	var _addClass = function(el, c){
@@ -33,13 +27,8 @@
 	// Removes a class (if it's there)
 	var _removeClass = function(el, c){
 		if(_hasClass(el, c)){
-			var cs = _classToArray(el);
-			for (var i = 0; i < cs.length; i++) {
-				if(cs[i] == c){
-					cs.splice(i,1);
-				}
-			};
-			el.className = _arrayToClass(cs);
+            var cs = _classToArray(el);
+			el.className = cs.splice(cs.indexOf(c), 1);
 		}
 	}
 	// Toggles a class in an element
