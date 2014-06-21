@@ -1,0 +1,11 @@
+{
+  "title": "classing",
+  "author": "Jeremias Menichelli",
+  "repository": "https://github.com/jeremenichelli/classing",
+  "devDependencies": {
+    "gulp": "^3.8.1",
+    "gulp-uglify": "^0.3.1",
+    "gulp-jshint": "^1.6.3",
+    "gulp-rename": "^1.2.0"
+  }
+}
