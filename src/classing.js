@@ -1,8 +1,3 @@
-// Classing.js
-// fallback for browser that don't support classList
-// by Jeremias Menichelli - https://github.com/jeremenichelli
-(function(document){
-    'use strict';
     // Object to prototype
     var els = (typeof HTMLElement !== 'undefined') ? HTMLElement : Element;
 
@@ -14,17 +9,18 @@
     var _hasClass = function(el, c){
         return _classToArray(el).indexOf(c) !== -1;
     };
-    // Adds a class (if there's not already there)
+    // Adds a class (if it's not already there)
     var _addClass = function(el, c){
         if(!_hasClass(el, c)){
-            el.className = el.className + ' ' + c;
+            el.className += (el.className === '') ? c : ' ' + c;
         }
     };
     // Removes a class (if it's there)
     var _removeClass = function(el, c){
         if(_hasClass(el, c)){
             var cs = _classToArray(el);
-            el.className = cs.splice(cs.indexOf(c), 1).join(' ');
+            cs.splice(cs.indexOf(c), 1);
+            el.className = cs.join(' ');
         }
     };
     // Toggles a class in an element
@@ -35,7 +31,7 @@
             _addClass(el, c);
         }
     };
-    
+
     if(document.documentElement.classList){
         els.prototype.hasClass = function(c){
             return this.classList.contains(c);
@@ -69,4 +65,3 @@
             _toggleClass(this, c);
         };
     }
-})(document);
