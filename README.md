@@ -1,7 +1,7 @@
 classing
 ========
 
-This script that creates _addClass_, __removeClass__, __hasClass__ and __toggleClass__ functions for HTML elements.
+This script that creates __addClass__, __removeClass__, __hasClass__ and __toggleClass__ functions for HTML elements.
 
 It takes advantage of the classList API and its great performance on modern browser in case it's supported. If it's not, then fallbacks for each function will be provided.
 
