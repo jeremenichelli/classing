@@ -3,7 +3,7 @@
 
     // Given an element, converts classes into an array
     var _classToArray = function(el){
-        return el.className.split(/\s/);
+        return el.className.split(/\s+/);
     };
     // Checks if an element has a class
     var _hasClass = function(el, c){

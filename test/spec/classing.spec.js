@@ -2,15 +2,18 @@
 describe('classing', function(){
 
     describe('addClass', function(){
-        var el = document.createElement('div'),
-            oneMoreEl = document.createElement('div'),
-            newClass = 'dummyClass',
+        var el, oneMoreEl, newClass, oneMoreClass;
+        beforeEach(function(){
+            el = document.createElement('div');
+            oneMoreEl = document.createElement('div');
+            newClass = 'dummyClass';
             oneMoreClass = 'anotherDummyClass';
 
-        oneMoreEl.className = newClass;
+            oneMoreEl.className = newClass;
 
-        el.addClass(newClass);
-        oneMoreEl.addClass(oneMoreClass);
+            el.addClass(newClass);
+            oneMoreEl.addClass(oneMoreClass);
+        });
 
         it('Add a class to an element with no classes', function(){
             expect(el.className === newClass).toBe(true);
@@ -22,15 +25,18 @@ describe('classing', function(){
     });
 
     describe('_addClass', function(){
-        var el = document.createElement('div'),
-            oneMoreEl = document.createElement('div'),
-            newClass = 'dummyClass',
+        var el, oneMoreEl, newClass, oneMoreClass;
+        beforeEach(function(){
+            el = document.createElement('div');
+            oneMoreEl = document.createElement('div');
+            newClass = 'dummyClass';
             oneMoreClass = 'anotherDummyClass';
 
-        oneMoreEl.className = newClass;
+            oneMoreEl.className = newClass;
 
-        _addClass(el, newClass);
-        _addClass(oneMoreEl, oneMoreClass);
+            _addClass(el, newClass);
+            _addClass(oneMoreEl, oneMoreClass);
+        });
 
         it('Add a class to an element with no classes', function(){
             expect(el.className === newClass).toBe(true);
@@ -42,15 +48,18 @@ describe('classing', function(){
     });
 
     describe('removeClass', function(){
-        var el = document.createElement('div'),
-            oneMoreEl = document.createElement('div'),
-            newClass = 'dummyClass',
+        var el, oneMoreEl, newClass, oneMoreClass;
+        beforeEach(function(){
+            el = document.createElement('div');
+            oneMoreEl = document.createElement('div');
+            newClass = 'dummyClass';
             oneMoreClass = 'anotherDummyClass';
 
-        oneMoreEl.className = oneMoreClass + ' ' + newClass;
+            oneMoreEl.className = oneMoreClass + ' ' + newClass;
 
-        el.removeClass(newClass);
-        oneMoreEl.removeClass(oneMoreClass)
+            el.removeClass(newClass);
+            oneMoreEl.removeClass(oneMoreClass);
+        });
 
         it('Remove a class to an element with no classes', function(){
             expect(el.className === '').toBe(true);
@@ -62,15 +71,18 @@ describe('classing', function(){
     });
 
     describe('_removeClass', function(){
-        var el = document.createElement('div'),
-            oneMoreEl = document.createElement('div'),
-            newClass = 'dummyClass',
+        var el, oneMoreEl, newClass, oneMoreClass;
+        beforeEach(function(){
+            el = document.createElement('div');
+            oneMoreEl = document.createElement('div');
+            newClass = 'dummyClass';
             oneMoreClass = 'anotherDummyClass';
 
-        oneMoreEl.className = oneMoreClass + ' ' + newClass;
+            oneMoreEl.className = oneMoreClass + ' ' + newClass;
 
-        _removeClass(el, newClass);
-        _removeClass(oneMoreEl, oneMoreClass)
+            _removeClass(el, newClass);
+            _removeClass(oneMoreEl, oneMoreClass);
+        });
 
         it('Remove a class to an element with no classes', function(){
             expect(el.className === '').toBe(true);
@@ -82,52 +94,61 @@ describe('classing', function(){
     });
 
     describe('toggleClass', function(){
-        var el = document.createElement('div'),
-            oneMoreEl = document.createElement('div'),
-            newClass = 'dummyClass',
+        var el, oneMoreEl, newClass, oneMoreClass;
+        beforeEach(function(){
+            el = document.createElement('div');
+            oneMoreEl = document.createElement('div');
+            newClass = 'dummyClass';
             oneMoreClass = 'anotherDummyClass';
 
-        oneMoreEl.className = oneMoreClass + ' ' + newClass;
+            oneMoreEl.className = oneMoreClass + ' ' + newClass;
 
-        el.toggleClass(newClass);
-        oneMoreEl.toggleClass(newClass);
+            el.toggleClass(newClass);
+            oneMoreEl.toggleClass(oneMoreClass);
+        });
 
         it('Toggle to add a class to an element with no classes', function(){
             expect(el.className === newClass).toBe(true);
         });
 
         it('Toggle to remove a class to an element with classes', function(){
-            expect(oneMoreEl.className === oneMoreClass).toBe(true);
+            expect(oneMoreEl.className === newClass).toBe(true);
         });
     });
 
     describe('_toggleClass', function(){
-        var el = document.createElement('div'),
-            oneMoreEl = document.createElement('div'),
-            newClass = 'dummyClass',
+        var el, oneMoreEl, newClass, oneMoreClass;
+        beforeEach(function(){
+            el = document.createElement('div');
+            oneMoreEl = document.createElement('div');
+            newClass = 'dummyClass';
             oneMoreClass = 'anotherDummyClass';
 
-        oneMoreEl.className = oneMoreClass + ' ' + newClass;
+            oneMoreEl.className = oneMoreClass + ' ' + newClass;
 
-        _toggleClass(el, newClass);
-        _toggleClass(oneMoreEl, newClass);
+            _toggleClass(el, newClass);
+            _toggleClass(oneMoreEl, oneMoreClass);
+        });
 
         it('Toggle to add a class to an element with no classes', function(){
             expect(el.className === newClass).toBe(true);
         });
 
         it('Toggle to remove a class to an element with classes', function(){
-            expect(oneMoreEl.className === oneMoreClass).toBe(true);
+            expect(oneMoreEl.className === newClass).toBe(true);
         });
     });
 
     describe('hasClass', function(){
-        var el = document.createElement('div'),
-            oneMoreEl = document.createElement('div'),
-            newClass = 'dummyClass',
+        var el, oneMoreEl, newClass, oneMoreClass;
+        beforeEach(function(){
+            el = document.createElement('div');
+            oneMoreEl = document.createElement('div');
+            newClass = 'dummyClass';
             oneMoreClass = 'anotherDummyClass';
 
-        oneMoreEl.className = oneMoreClass + ' ' + newClass;
+            oneMoreEl.className = oneMoreClass + ' ' + newClass;
+        });
 
         it('Checks if an element with no classes has a class', function(){
             expect(el.hasClass(newClass)).toBe(false);
@@ -139,12 +160,19 @@ describe('classing', function(){
     });
 
     describe('_hasClass', function(){
-        var el = document.createElement('div'),
-            oneMoreEl = document.createElement('div'),
-            newClass = 'dummyClass',
+        var el, oneMoreEl, thirdEl, fourthEl, newClass, oneMoreClass;
+        beforeEach(function(){
+            el = document.createElement('div');
+            oneMoreEl = document.createElement('div');
+            thirdEl = document.createElement('div');
+            fourthEl = document.createElement('div');
+            newClass = 'dummyClass';
             oneMoreClass = 'anotherDummyClass';
 
-        oneMoreEl.className = oneMoreClass + ' ' + newClass;
+            oneMoreEl.className = oneMoreClass + ' ' + newClass;
+            thirdEl.className = '    ' + oneMoreClass + '     ';
+            fourthEl.className = 'some-class';
+        });
 
         it('Checks if an element with no classes has a class', function(){
             expect(_hasClass(el, newClass)).toBe(false);
@@ -153,6 +181,13 @@ describe('classing', function(){
         it('Checks if an element with classes has a class', function(){
             expect(_hasClass(oneMoreEl, newClass)).toBe(true);
         });
-    });
 
+        it('Checks if an element with has a class, with extra spaces', function(){
+            expect(_hasClass(oneMoreEl, newClass)).toBe(true);
+        });
+
+        it('Checks for a not present class separated with hyphens', function(){
+            expect(_hasClass(fourthEl, 'some')).toBe(false);
+        });
+    });
 });
